@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据分析学习之路（1） | HappyBang</title><meta name="description" content="数据分析学习之路(1) 1、python文件操作1.1、读取文件读取模式打开一个文件，用python的内置的open()函数，传入文件名和标识符 12f &#x3D; open(&#39;.&#x2F;utf-8.txt&#39;,&#39;r&#39;)f &#x3D; open(&#39;C:&#x2F;Users&#x2F;lenovo&#x2F;Desktop&#x2F;md文档的编写&#x2F;utf-8.txt&#39;,&#39;r&#39;)  第一种是相对路径下的utf-8文件 第二种是绝对路径下的utf-8文件 调用r"><meta name="author" content="Bang Li"><meta name="copyright" content="Bang Li"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="数据分析学习之路（1）"><meta name="twitter:description" content="数据分析学习之路(1) 1、python文件操作1.1、读取文件读取模式打开一个文件，用python的内置的open()函数，传入文件名和标识符 12f &#x3D; open(&#39;.&#x2F;utf-8.txt&#39;,&#39;r&#39;)f &#x3D; open(&#39;C:&#x2F;Users&#x2F;lenovo&#x2F;Desktop&#x2F;md文档的编写&#x2F;utf-8.txt&#39;,&#39;r&#39;)  第一种是相对路径下的utf-8文件 第二种是绝对路径下的utf-8文件 调用r"><meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="og:type" content="article"><meta property="og:title" content="数据分析学习之路（1）"><meta property="og:url" content="http://yoursite.com/2020/06/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/"><meta property="og:site_name" content="HappyBang"><meta property="og:description" content="数据分析学习之路(1) 1、python文件操作1.1、读取文件读取模式打开一个文件，用python的内置的open()函数，传入文件名和标识符 12f &#x3D; open(&#39;.&#x2F;utf-8.txt&#39;,&#39;r&#39;)f &#x3D; open(&#39;C:&#x2F;Users&#x2F;lenovo&#x2F;Desktop&#x2F;md文档的编写&#x2F;utf-8.txt&#39;,&#39;r&#39;)  第一种是相对路径下的utf-8文件 第二种是绝对路径下的utf-8文件 调用r"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-06-18T10:44:15.000Z"><meta property="article:modified_time" content="2020-06-18T10:47:39.441Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/2020/06/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/"><link rel="prev" title="数据分析学习之路（2）" href="http://yoursite.com/2020/06/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%882%EF%BC%89/"><link rel="next" title="Spring基础篇——AOP" href="http://yoursite.com/2020/05/19/Spring%E5%9F%BA%E7%A1%80%E7%AF%87%E2%80%94%E2%80%94AOP/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据分析学习之路-1"><span class="toc-number">1.</span> <span class="toc-text">数据分析学习之路(1)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、python文件操作"><span class="toc-number">1.1.</span> <span class="toc-text">1、python文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、读取文件"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1、读取文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、文件的打开方式"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2、文件的打开方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、字符编码"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3、字符编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4、写文件"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4、写文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、PDF基本操作"><span class="toc-number">1.2.</span> <span class="toc-text">2、PDF基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-读取PDF"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 读取PDF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-合并PDF"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 合并PDF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-word转Pdf"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 word转Pdf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Pdf添加水印"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 Pdf添加水印</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">HappyBang</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">数据分析学习之路（1）</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-06-18 18:44:15"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2020-06-18</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-06-18 18:47:39"><i class="fa fa-history" aria-hidden="true"></i> Updated 2020-06-18</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="数据分析学习之路-1"><a href="#数据分析学习之路-1" class="headerlink" title="数据分析学习之路(1)"></a>数据分析学习之路(1)</h1><blockquote>
+<h2 id="1、python文件操作"><a href="#1、python文件操作" class="headerlink" title="1、python文件操作"></a>1、python文件操作</h2><h3 id="1-1、读取文件"><a href="#1-1、读取文件" class="headerlink" title="1.1、读取文件"></a>1.1、读取文件</h3><p>读取模式打开一个文件，用python的内置的open()函数，传入文件名和标识符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'./utf-8.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">f = open(<span class="string">'C:/Users/lenovo/Desktop/md文档的编写/utf-8.txt'</span>,<span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>第一种是相对路径下的utf-8文件</p>
+<p>第二种是绝对路径下的utf-8文件</p>
+<p>调用read()方法可以一次读取文件的全部内容，用一个str对象表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'./text.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">my_context = f.read()</span><br><span class="line">print(my_context)</span><br></pre></td></tr></table></figure>
+
+<p>如果读取的编码格式错误，需要定义encoding=’ ‘</p>
+<p>最后一步是调用close()方法关闭文件。文件完成后必须关闭。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<p>python可以引用with语句来自动调用close()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'./text.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line"> print(f.read())<span class="number">1.2</span>、文件的打开方式</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2、文件的打开方式"><a href="#1-2、文件的打开方式" class="headerlink" title="1.2、文件的打开方式"></a>1.2、文件的打开方式</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内<br>容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编<br>辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容<br>会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编<br>辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，<br>新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结<br>尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进<br>行写入。</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时<br>会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结<br>尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody></table>
+<h3 id="1-3、字符编码"><a href="#1-3、字符编码" class="headerlink" title="1.3、字符编码"></a>1.3、字符编码</h3><p>open() 函数还接收一个 errors 参数，表示如果遇到编码错误后如何处理。最简单的方式是直接忽略：</p>
+<p>设置encoding编码格式       <strong>errors=’ignore’</strong>忽略编码错误的格式，这样可以直接打开</p>
+<h3 id="1-4、写文件"><a href="#1-4、写文件" class="headerlink" title="1.4、写文件"></a>1.4、写文件</h3><p>和读文件的打开方式相同，要传入‘w’或者‘wb’的标识符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'./utf-8.txt'</span>,<span class="string">'w'</span>,errors=<span class="string">'ignore'</span>) <span class="keyword">as</span> f:</span><br><span class="line"> f.write(<span class="string">'heelo!'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>原有文件内容会被删除</p>
+<p>使用‘a’追加模式不会删除文件原本内容</p>
+<h2 id="2、PDF基本操作"><a href="#2、PDF基本操作" class="headerlink" title="2、PDF基本操作"></a>2、PDF基本操作</h2><p>导入所需框架：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyPDF2 <span class="keyword">import</span> PdfFileReader, PdfFileWriter</span><br><span class="line"><span class="keyword">import</span> pdfplumber</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+
+<p>定义所需合并的PDF的路径和合并后文件的名称以及存放路径：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#旧PDF文件的地址</span></span><br><span class="line">old_dir_path = <span class="string">'C:/Users/lenovo/Desktop/数据分析学习资料/20200605-python文件操作与pdf处理-课后资料/datafile/txtpdf/oldfiles'</span></span><br><span class="line"><span class="comment">#新PDF文件的地址</span></span><br><span class="line">new_dir_path = <span class="string">'C:/Users/lenovo/Desktop/数据分析学习资料/20200605-python文件操作与pdf处理-课后资料/datafile/txtpdf/newfiles'</span></span><br><span class="line">new_pdf_name = <span class="string">'all_pdf.pdf'</span> <span class="comment">#新的pdf的名字</span></span><br><span class="line">pdf_path = os.path.join(old_dir_path,<span class="string">'first.pdf'</span>) <span class="comment">#相当于打开这个pdf文件</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1-读取PDF"><a href="#2-1-读取PDF" class="headerlink" title="2.1 读取PDF"></a>2.1 读取PDF</h3><ul>
+<li><p>读取PDF文字内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建pdf文件对象</span></span><br><span class="line">pdf = pdfplumber.open(pdf_path)</span><br><span class="line"><span class="comment"># 获得所有的页数</span></span><br><span class="line">pdf_pages = len(pdf.pages)</span><br><span class="line"><span class="comment"># 获取指定第1页的文字内容</span></span><br><span class="line">first_page = pdf.pages[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># extract_text()获取当前页面的文本值</span></span><br><span class="line">first_page.extract_text()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, pdf_pages):</span><br><span class="line">    <span class="comment">#遍历当前所有的页面, 输出全部的文本值</span></span><br><span class="line">    print(pdf.pages[i].extract_text())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读取PDF表格</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取第1页的表格</span></span><br><span class="line">pdf.pages[<span class="number">0</span>].extract_table()</span><br><span class="line"><span class="comment"># 定义一个列表 存储该pdf种所有的表格</span></span><br><span class="line">all_content = []</span><br><span class="line"><span class="comment"># 获取该PDF种的所有表格</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, pdf_pages):</span><br><span class="line">    <span class="comment"># 此处不使用extract_table(),因为如果当前页面没有表格 extract_table()会报错</span></span><br><span class="line">    <span class="comment"># extract_tables()返回的是[[每一行内容]]这种嵌套格式</span></span><br><span class="line">    <span class="comment"># 如果直接添加会把每一个页面的内容作为一个元素添加到all_content,写入Excel时就会出现错乱的问题</span></span><br><span class="line">    <span class="comment"># pdf.pages[i].extract_tables()</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> pdf.pages[i].extract_tables():</span><br><span class="line">    <span class="comment"># 在读取没有表格的页时,extract_tables()会返回一个带有空字符串的列表,所以我们要判断一下</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> j:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">''</span> <span class="keyword">not</span> <span class="keyword">in</span> k:</span><br><span class="line">                all_content.append(k)</span><br><span class="line">                print(k)</span><br><span class="line"><span class="comment"># 转换为DataFrame, 方便存到Excel中</span></span><br><span class="line">data = pd.DataFrame(all_content )</span><br><span class="line">print(data)</span><br><span class="line"><span class="comment">#将数据存入新建的Excel表格中，index和header控制序列不保存进去</span></span><br><span class="line">data.to_excel(<span class="string">'pdf_table.xlsx'</span>, index=<span class="literal">False</span>, header=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="2-2-合并PDF"><a href="#2-2-合并PDF" class="headerlink" title="2.2 合并PDF"></a>2.2 合并PDF</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义一个列表来存取所有pdf路径</span></span><br><span class="line">pdf_paths = []</span><br><span class="line"> <span class="comment">#使用os模块，获得old_dir_path下所有文件</span></span><br><span class="line"><span class="keyword">for</span> file_name <span class="keyword">in</span> os.listdir(old_dir_path):</span><br><span class="line">    <span class="comment">#判断是不是pdf文件</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'.pdf'</span> <span class="keyword">in</span> file_name:</span><br><span class="line">        <span class="comment">#是的话将文件路径添加进列表中</span></span><br><span class="line">        pdf_paths.append(os.path.join(old_dir_path, file_name))</span><br><span class="line">new_pdf = PdfFileWriter()</span><br><span class="line"><span class="comment">#记录pdf总页数</span></span><br><span class="line">numPages = <span class="number">0</span>;</span><br><span class="line"><span class="comment">#获取列表中的所有pdf文件</span></span><br><span class="line"><span class="keyword">for</span> pdfpath <span class="keyword">in</span> pdf_paths:</span><br><span class="line">    old_pdf = PdfFileReader(open(pdfpath,<span class="string">'rb'</span>))</span><br><span class="line">    <span class="comment">#获取当前pdf文件的页数</span></span><br><span class="line">    pdfPages = old_pdf.getNumPages()</span><br><span class="line">    <span class="comment">#将页数添加到一起</span></span><br><span class="line">    numPages += pdfPages</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(old_pdf.getNumPages()):</span><br><span class="line">        new_pdf.addPage(old_pdf.getPage(i))</span><br><span class="line"><span class="keyword">with</span> open(os.path.join(new_dir_path,new_pdf_name),<span class="string">'wb'</span>) <span class="keyword">as</span> p:</span><br><span class="line">    new_pdf.write(p)</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="2-3-word转Pdf"><a href="#2-3-word转Pdf" class="headerlink" title="2.3 word转Pdf"></a>2.3 word转Pdf</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本方法是直接使用win32com调用word中的接口进行转换为PDF,相当于用代码点击word中的转换为PDF</span></span><br><span class="line"><span class="comment"># 此种方式只适合win电脑, mac没有提供该模块的安装</span></span><br><span class="line"><span class="keyword">from</span> win32com.client <span class="keyword">import</span> gencache</span><br><span class="line"><span class="keyword">from</span> win32com.client <span class="keyword">import</span> constants, gencache</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">word_Pdf</span><span class="params">(word_Path, pdf_Path)</span>:</span></span><br><span class="line">    <span class="comment"># 调用word程序 并返回一个可执行的对象</span></span><br><span class="line">    word = gencache.EnsureDispatch(<span class="string">'Word.Application'</span>)</span><br><span class="line">    docx = word.Documents.Open(word_Path, ReadOnly=<span class="number">1</span>)</span><br><span class="line">    docx.ExportAsFixedFormat(pdf_Path,constants.wdExportFormatPDF,</span><br><span class="line">Item=constants.wdExportDocumentWithMarkup,CreateBookmarks=constants.wdExportCreateHeadingBookmarks)</span><br><span class="line">    word.Quit(constants.wdDoNotSaveChanges)</span><br><span class="line"></span><br><span class="line">word_Pdf(<span class="string">"C:/Users/lenovo/Desktop/JEE论文.docx"</span>,<span class="string">"C:/Users/lenovo/Desktop/JEE论文.pdf"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>直接更改调用方法的参数即可</p>
+</li>
+<li><h3 id="2-4-Pdf添加水印"><a href="#2-4-Pdf添加水印" class="headerlink" title="2.4 Pdf添加水印"></a>2.4 Pdf添加水印</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyPDF2 <span class="keyword">import</span> PdfFileReader, PdfFileWriter</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">PDF加水印就是将水印PDF和要加水印的PDF进行合并</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 页的合并</span></span><br><span class="line">pdf = PdfFileReader(<span class="string">'C:/Users/Administrator/Desktop/files/first.pdf'</span>)</span><br><span class="line">water_pdf = PdfFileReader(<span class="string">'C:/Users/Administrator/Desktop/files/water.pdf'</span>)</span><br><span class="line"><span class="comment"># 准备要合并的两个页面</span></span><br><span class="line">water = water_pdf.getPage(<span class="number">0</span>)</span><br><span class="line">writer = PdfFileWriter()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(pdf.getNumPages()):</span><br><span class="line">  <span class="comment"># 使用页对象中的方法mergePage进行合并</span></span><br><span class="line">  pdf.getPage(i).mergePage(water)</span><br><span class="line">  <span class="comment">#添加到新的PDF中</span></span><br><span class="line">  writer.addPage(pdf.getPage(i))</span><br><span class="line"><span class="comment"># 此处参数必须写文件对象</span></span><br><span class="line">writer.write(open(<span class="string">'newres.pdf'</span>, <span class="string">'wb'</span>))</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</blockquote>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Bang Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/06/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/">http://yoursite.com/2020/06/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%881%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/06/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%882%EF%BC%89/"><img class="prev_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">数据分析学习之路（2）</div></div></a></div><div class="next-post pull_right"><a href="/2020/05/19/Spring%E5%9F%BA%E7%A1%80%E7%AF%87%E2%80%94%E2%80%94AOP/"><img class="next_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Spring基础篇——AOP</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bang Li</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script></body></html>
